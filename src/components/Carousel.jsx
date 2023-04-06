@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 // Set up Swiper modules
 SwiperCore.use([Navigation, Autoplay]);
@@ -13,9 +14,11 @@ const getPosterUrl = (posterpath) => {
 
 const MovieCard = ({ movie }) => {
   return (
+    <Link to={`/movies/${movie.id}`}>
     <div className="card shadow">
       <img src={getPosterUrl(movie.poster_path)} className="card-img-top" alt={movie.title} />
     </div>
+    </Link>
   );
 };
 

@@ -4,7 +4,6 @@ import { auth } from './config';
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { FaBell, FaGift, FaUser, FaSearch } from "react-icons/fa";
 import { useState } from 'react';
-import Home from './Home';
 
 function NetflixNavbar() {
     const [user, setUser] = useState(auth.currentUser);
