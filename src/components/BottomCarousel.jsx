@@ -1,4 +1,4 @@
-import SwiperCore, { Navigation, Autoplay } from "swiper";
+import SwiperCore, { Navigation } from "swiper";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Set up Swiper modules
-SwiperCore.use([Navigation, Autoplay]);
+SwiperCore.use([Navigation]);
 
 const getPosterUrl = (posterpath) => {
   return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`;
@@ -15,7 +15,7 @@ const getPosterUrl = (posterpath) => {
 const MovieCard = ({ movie }) => {
   return (
     <Link to={`/movies/${movie.id}`}>
-      <div className="card shadow"  style={{ height: "150px" }}>
+      <div className="card shadow" style={{ height: "150px" }}>
         <img
           src={getPosterUrl(movie.poster_path)}
           className="card-img-top"
@@ -26,7 +26,7 @@ const MovieCard = ({ movie }) => {
   );
 };
 
-const CardCarousel = () => {
+const BottomCarousel = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -46,9 +46,8 @@ const CardCarousel = () => {
     <div>
       <Swiper
         style={{ backgroundColor: "black" }}
-        spaceBetween={1}
-        slidesPerView={1}
-        // autoplay={{ delay: 2500 }}
+        spaceBetween={5}
+        slidesPerView={6}
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next",
@@ -56,19 +55,19 @@ const CardCarousel = () => {
         breakpoints={{
           640: {
             slidesPerView: 2,
-            spaceBetween: 1,
+            spaceBetween: 5,
           },
           768: {
             slidesPerView: 3,
-            spaceBetween: 2,
+            spaceBetween: 5,
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 3,
+            spaceBetween: 5,
           },
           1200: {
             slidesPerView: 5,
-            spaceBetween: 4,
+            spaceBetween: 5,
           },
           1400: {
             slidesPerView: 6,
@@ -86,4 +85,4 @@ const CardCarousel = () => {
   );
 };
 
-export default CardCarousel;
+export default BottomCarousel;

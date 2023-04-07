@@ -53,26 +53,13 @@ const SingleMovie = () => {
     };
 
     if (!movie) {
-        return <div>Loading...</div>;
+        return <div className="text-center align-items-center text-white fs-1">Loading...</div>;
     }
 
     const posterUrl = getPosterUrl(movie.poster_path);
 
     return (
         <div>
-            <div style={{ backgroundColor: '#141414' }}>
-                <img
-                    src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
-                    width="100"
-                    height="30"
-                    className="d-inline-block align-top"
-                    alt="Netflix logo"
-                />
-                <Form action="/search" method="get">
-                    <FormControl type="text" name="q" placeholder="Search..." />
-                    <Button type="submit">Search</Button>
-                </Form>
-            </div>
             <div
                 style={{
                     height: 'calc(100vh - 140px)',
@@ -125,10 +112,11 @@ const SingleMovie = () => {
                     </div>
                 </div>
                 <div style={{ padding: '50px' }}>
-                    <h2 style={{ marginBottom: '20px' }}>Similar Movies</h2>
+                    <h2 className="text-white" style={{ marginBottom: '20px' }}>Similar Movies</h2>
                     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                         {similarMovies.map((movie) => (
                             <div
+                            // className="mx-auto"
                                 key={movie.id}
                                 style={{
                                     marginRight: '20px',
