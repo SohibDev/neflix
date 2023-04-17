@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function SearchedMoviesCard({ searchResults }) {
+function SearchedMoviesCard({ searchResults, searchTerm }) {
   return (
     <div className="search-results">
       {searchResults?.map((movie) => (

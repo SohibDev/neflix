@@ -22,18 +22,21 @@ function NetflixNavbar() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    if (searchTerm === "") {
+      navigate(-1); // navigate to the previous page
+      return;
+    }
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&query=${searchTerm}&page=1&include_adult=false`
       );
       setSearchResults(response.data.results);
-      <SearchedMoviesCard searched={searchResults} />
       navigate("/searchedmoviescard");
     } catch (error) {
       console.error(error);
     }
   };
-
+  
   return (
     <Navbar bg="dark" variant="dark" expand="md">
       <div className="container-fluid">
@@ -100,10 +103,13 @@ function NetflixNavbar() {
             </Nav>
           </div>
         </Navbar.Collapse>
-      </div>
-      {searchResults.length > 0 && (
-        <SearchedMoviesCard searchResults={searchResults} />
+      {(
+        <SearchedMoviesCard
+          searchResults={searchResults}
+          searchTerm={searchTerm}
+        />
       )}
+      </div>
     </Navbar>
   );
 }
