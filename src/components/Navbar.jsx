@@ -27,7 +27,8 @@ function NetflixNavbar() {
         `https://api.themoviedb.org/3/search/movie?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&query=${searchTerm}&page=1&include_adult=false`
       );
       setSearchResults(response.data.results);
-      navigate("/searched-movies");
+      <SearchedMoviesCard searched={searchResults} />
+      navigate("/searchedmoviescard");
     } catch (error) {
       console.error(error);
     }
@@ -35,9 +36,9 @@ function NetflixNavbar() {
 
   return (
     <Navbar bg="dark" variant="dark" expand="md">
-      <div className="container">
+      <div className="container-fluid">
         <Link to={"/"}>
-          <Navbar.Brand>
+          <Navbar.Brand className="mx-auto">
             <img
               src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
               width="100"
@@ -53,11 +54,21 @@ function NetflixNavbar() {
           className="justify-content-between"
         >
           <Nav className="mr-auto">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">TV Shows</Nav.Link>
-            <Nav.Link href="#">Movies</Nav.Link>
-            <Nav.Link href="#">New &amp; Popular</Nav.Link>
-            <Nav.Link href="#">My List</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/tv-shows">
+              TV Shows
+            </Nav.Link>
+            <Nav.Link as={Link} to="/movies">
+              Movies
+            </Nav.Link>
+            <Nav.Link as={Link} to="/new-popular">
+              New &amp; Popular
+            </Nav.Link>
+            <Nav.Link as={Link} to="/my-list">
+              My List
+            </Nav.Link>
           </Nav>
           <div className="d-flex flex-column flex-sm-row">
             <Form
@@ -86,21 +97,13 @@ function NetflixNavbar() {
               <Nav.Link href="#" className="ml-3">
                 <FaUser size={20} />
               </Nav.Link>
-              <Nav.Link href="#" className="ml-3">
-                {user ? (
-                  navigate("/")
-                ) : (
-                  <div>
-                    <Button variant="danger" onClick={logout}>
-                      Logout
-                    </Button>
-                  </div>
-                )}
-              </Nav.Link>
             </Nav>
           </div>
         </Navbar.Collapse>
       </div>
+      {searchResults.length > 0 && (
+        <SearchedMoviesCard searchResults={searchResults} />
+      )}
     </Navbar>
   );
 }

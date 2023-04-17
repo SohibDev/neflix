@@ -16,6 +16,8 @@ const HeroSection = () => {
       )
       .then((response) => {
         setMovie(response.data.results[0]);
+        console.log(response.data.results);
+
       })
       .catch((error) => {
         console.log(error);

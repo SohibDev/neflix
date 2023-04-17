@@ -7,6 +7,10 @@ import NetflixNavbar from './components/Navbar';
 import NotFoundPage from './components/NoteFound';
 import SearchedMoviesCard from './components/SearchedMoviesCard';
 import Login from './components/Login';
+import TvShows from './components/TvShows'; 
+import Movies from './components/Movies'; 
+import NewPopular from './components/NewPopular'; 
+import MyList from './components/MyList'; 
 
 
 function App() {
@@ -21,6 +25,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/movies/:id" element={<SingleMovie />} />
         <Route path="/searchedmoviescard" element={<SearchedMoviesCard />} />
+        <Route path="/tv-shows" element={<TvShows />} /> 
+        <Route path="/movies" element={<Movies />} /> 
+        <Route path="/new-popular" element={<NewPopular />} /> 
+        <Route path="/my-list" element={<MyList />} /> 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

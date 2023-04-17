@@ -1,23 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
-function SearchedMoviesCard(props) {
-  const { title, releaseDate, posterPath, id } = props;
-
+function SearchedMoviesCard({ searchResults }) {
   return (
-    <Link to={`/movie/${id}`}>
-      <Card className="bg-dark text-white mb-4">
-        <Card.Img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt={`${title} Poster`} />
-        <Card.ImgOverlay>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>
-            Released: {releaseDate}
-          </Card.Text>
-        </Card.ImgOverlay>
-      </Card>
-    </Link>
+    <div className="search-results">
+      {searchResults?.map((movie) => (
+        <div key={movie.id} className="searched-movie-card">
+          <img
+            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            alt={movie.title}
+          />
+          <div className="movie-info">
+            <h4>{movie.title}</h4>
+            <p>{movie.release_date}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
+
 
 export default SearchedMoviesCard;
