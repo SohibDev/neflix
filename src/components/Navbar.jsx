@@ -11,27 +11,42 @@ function NetflixNavbar() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  console.log(searchResults);
 
   const logout = () => {
     auth.signOut().then(() => {
       localStorage.removeItem("email");
       setUser(null);
       navigate("/signup");
+      {<SearchedMoviesCard />}
     });
   };
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (searchTerm === "") {
-      navigate(-1); // navigate to the previous page
+  
+    if (!searchTerm.trim()) {
+      navigate(-1);
       return;
     }
+  
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&query=${searchTerm}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie`,
+        {
+          params: {
+            api_key: "2549127d548d3a2f96bb538a296a8058",
+            language: "en-US",
+            query: searchTerm,
+            page: 1,
+            include_adult: false,
+          },
+        }
       );
+  
       setSearchResults(response.data.results);
       navigate("/searchedmoviescard");
+      {<SearchedMoviesCard searchResults={searchResults} searchTerm={searchTerm} />}
     } catch (error) {
       console.error(error);
     }
@@ -91,25 +106,49 @@ function NetflixNavbar() {
               </Button>
             </Form>
             <Nav>
-              <Nav.Link href="#" className="ml-3">
-                <FaBell size={20} />
+              <Nav.Link
+                as={Link}
+                to="/notifications"
+                className="d-flex align-items-center mx-3 mx-sm-0"
+              >
+                <FaBell />
               </Nav.Link>
-              <Nav.Link href="#" className="ml-3">
-                <FaGift size={20} />
+              <Nav.Link
+                as={Link}
+                to="/gifts"
+                className="d-flex align-items-center mx-3 mx-sm-0"
+              >
+                <FaGift />
               </Nav.Link>
-              <Nav.Link href="#" className="ml-3">
-                <FaUser size={20} />
-              </Nav.Link>
+              {user ? (
+                <Nav.Link
+                  as={Link}
+                  to="/account"
+                  className="d-flex align-items-center mx-3 mx-sm-0"
+                >
+                  <FaUser />
+                  <span className="ml-2">{user.email}</span>
+                </Nav.Link>
+              ) : (
+                <Button
+                  variant="outline-light"
+                  as={Link}
+                  to="/signin"
+                  className="mx-3 mx-sm-0"
+                >
+                  Sign In
+                </Button>
+              )}
+              {user && (
+                <Button variant="outline-light" onClick={logout}>
+                  Sign Out
+                </Button>
+              )}
             </Nav>
           </div>
         </Navbar.Collapse>
-      {(
-        <SearchedMoviesCard
-          searchResults={searchResults}
-          searchTerm={searchTerm}
-        />
-      )}
       </div>
+      {searchResults && <SearchedMoviesCard movies={searchResults} />}
     </Navbar>
   );
 }

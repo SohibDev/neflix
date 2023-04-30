@@ -10,7 +10,7 @@ function TvShows() {
     const fetchTvShows = async () => {
       try {
         const response = await axios.get(
-          "https://api.themoviedb.org/3/tv/popular?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&page=1"
+          "https://api.themoviedb.org/3/tv/popular?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&page=2"
         );
         setTvShows(response.data.results);
       } catch (error) {
@@ -38,19 +38,19 @@ function TvShows() {
       <Row xs={1} md={2} lg={4} className="g-4">
         {tvShows.map((show) => (
           <Col key={show.id}>
-            <Link to={`/tvshows/${show.id}`}>
-              <Card className="" style={{ aspectRatio: "1/3" }}>
+            <Card className="" style={{ aspectRatio: "1/3" }}>
+              <Link to={`/movies/${show.id}`}>
                 <Card.Img
                   variant="top"
                   src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
                   alt={show.name}
                 />
-                <Card.Body>
-                  <Card.Title>{show.name}</Card.Title>
-                  <Card.Text>{formatOverview(show.overview)}</Card.Text>
-                </Card.Body>
-              </Card>
-            </Link>
+              </Link>
+              <Card.Body>
+                <Card.Title>{show.name}</Card.Title>
+                <Card.Text>{formatOverview(show.overview)}</Card.Text>
+              </Card.Body>
+            </Card>
           </Col>
         ))}
       </Row>

@@ -56,7 +56,7 @@ const SingleMovie = () => {
         return <div className="text-center align-items-center text-white fs-1">Loading...</div>;
     }
 
-    const posterUrl = getPosterUrl(movie.poster_path);
+    const posterUrl = getPosterUrl(movie.poster_path);  
 
     return (
         <div>
