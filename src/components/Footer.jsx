@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaTelegram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -37,9 +37,10 @@ const Footer = () => {
           <Col md={3} className="mb-3">
             <h5>Follow Us</h5>
             <ul className="list-unstyled list-inline">
-              <li className="list-inline-item"><a href="#" style={{ color: '#3b5998' }}><FaFacebookF /></a></li>
-              <li className="list-inline-item"><a href="#" style={{ color: '#1da1f2' }}><FaTwitter /></a></li>
-              <li className="list-inline-item"><a href="#" style={{ color: '#e1306c' }}><FaInstagram /></a></li>
+              <li className="list-inline-item"><a target="_blank" href="https://www.facebook.com/profile.php?id=100083034646186" style={{ color: '#3b5998' }}><FaFacebookF /></a></li>
+              <li className="list-inline-item"><a target="_blank" href="https://twitter.com/SohibjonUzoqov" style={{ color: '#1da1f2' }}><FaTwitter /></a></li>
+              <li className="list-inline-item"><a target="_blank" href="https://t.me/sohibjon0101" style={{ color: '' }}><FaTelegram /></a></li>
+              <li className="list-inline-item"><a target="_blank" href="https://www.instagram.com/sohibjon.uzoqov/"  style={{ color: '#e1306c' }}><FaInstagram /></a></li>
             </ul>
           </Col>
         </Row>
