@@ -31,7 +31,7 @@ function Movies() {
 
   return (
     <div className="container my-5">
-      <h1 className="mb-5">Popular Movies</h1>
+      <h1 className="mb-5 text-white-50">Popular Movies</h1>
       <Row xs={1} md={2} lg={4} className="g-4">
         {movies.map((movie) => (
           <Col key={movie.id}>

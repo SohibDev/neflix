@@ -23,7 +23,7 @@ function MyList() {
 
   return (
     <Container>
-      <h1 className="mt-4 mb-4 text-truncate">My List</h1>
+      <h1 className="mt-4 mb-4 text-truncate text-white-50">My List</h1>
       <Row xs={1} sm={2} md={3} lg={4} className="g-4">
         {watchlist.map((movie) => (
           <Col key={movie.id}>

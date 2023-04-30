@@ -10,7 +10,7 @@ function TvShows() {
     const fetchTvShows = async () => {
       try {
         const response = await axios.get(
-          "https://api.themoviedb.org/3/tv/popular?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&page=2"
+          "https://api.themoviedb.org/3/tv/popular?api_key=2549127d548d3a2f96bb538a296a8058&language=en-US&page=10"
         );
         setTvShows(response.data.results);
       } catch (error) {
@@ -34,11 +34,11 @@ function TvShows() {
 
   return (
     <div className="container my-5">
-      <h1 className="mb-5">Popular TV Shows</h1>
+      <h1 className="mb-5" style={{ color: "black" }}>Popular TV Shows</h1>
       <Row xs={1} md={2} lg={4} className="g-4">
         {tvShows.map((show) => (
           <Col key={show.id}>
-            <Card className="" style={{ aspectRatio: "1/3" }}>
+            <Card className="h-100" style={{ height: "", }}>
               <Link to={`/movies/${show.id}`}>
                 <Card.Img
                   variant="top"
@@ -47,8 +47,15 @@ function TvShows() {
                 />
               </Link>
               <Card.Body>
-                <Card.Title>{show.name}</Card.Title>
+                <Card.Title style={{ color: "black" }}>{show.name}</Card.Title>
                 <Card.Text>{formatOverview(show.overview)}</Card.Text>
+                <Card.Text>
+                  {show.first_air_date && (
+                    <small className="text-muted">
+                      {new Date(show.first_air_date).getFullYear()}
+                    </small>
+                  )}
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>

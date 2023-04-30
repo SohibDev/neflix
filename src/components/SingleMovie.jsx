@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const getPosterUrl = (posterpath) => {
@@ -113,7 +113,7 @@ const SingleMovie = () => {
                 </div>
                 <div style={{ padding: '50px' }}>
                     <h2 className="text-white" style={{ marginBottom: '20px' }}>Similar Movies</h2>
-                    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className="justify-content-center" style={{ display: 'flex', flexWrap: 'wrap' }}>
                         {similarMovies.map((movie) => (
                             <div
                             // className="mx-auto"
@@ -122,15 +122,16 @@ const SingleMovie = () => {
                                     marginRight: '20px',
                                     marginBottom: '20px',
                                     maxWidth: '220px',
+                                    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.2)'
                                 }}
                             >
-                                <a href={`/movies/${movie.id}`}>
+                                <Link to={`/movies/${movie.id}`}>
                                     <img
                                         src={getPosterUrl(movie.poster_path)}
                                         alt="movie poster"
                                         style={{ maxWidth: '100%' }}
                                     />
-                                </a>
+                                </Link>
                                 <p style={{ marginTop: '10px', fontWeight: '600' }}>
                                     {movie.title}
                                 </p>
