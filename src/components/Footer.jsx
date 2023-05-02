@@ -9,29 +9,29 @@ const Footer = () => {
         <Row>
           <Col md={3} className="mb-3">
             <h3 style={{ color: '#e50914' }}>Netflix</h3>
-            <ul className="list-unstyled" style={{ color: 'white', listStyle: 'none' }}>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Investor Relations</a></li>
-              <li><a href="#">Careers</a></li>
+            <ul className="list-unstyled">
+              <li><a href="#" className="text-white-50">About Us</a></li>
+              <li><a href="#" className="text-white-50">Contact Us</a></li>
+              <li><a href="#" className="text-white-50">Investor Relations</a></li>
+              <li><a href="#" className="text-white-50">Careers</a></li>
             </ul>
           </Col>
           <Col md={3} className="mb-3">
             <h5>Legal</h5>
-            <ul className="list-unstyled" style={{ color: 'white', listStyle: 'none' }}>
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Privacy Statement</a></li>
-              <li><a href="#">Cookie Preferences</a></li>
-              <li><a href="#">Corporate Information</a></li>
+            <ul className="list-unstyled">
+              <li><a href="#" className="text-white-50">Terms of Use</a></li>
+              <li><a href="#" className="text-white-50">Privacy Statement</a></li>
+              <li><a href="#" className="text-white-50">Cookie Preferences</a></li>
+              <li><a href="#" className="text-white-50">Corporate Information</a></li>
             </ul>
           </Col>
           <Col md={3} className="mb-3">
             <h5>Help Center</h5>
-            <ul className="list-unstyled" style={{ color: 'white', listStyle: 'none' }}>
-              <li><a href="#">Account</a></li>
-              <li><a href="#">Billing</a></li>
-              <li><a href="#">Supported Devices</a></li>
-              <li><a href="#">Getting Started</a></li>
+            <ul className="list-unstyled">
+              <li><a href="#" className="text-white-50">Account</a></li>
+              <li><a href="#" className="text-white-50">Billing</a></li>
+              <li><a href="#" className="text-white-50">Supported Devices</a></li>
+              <li><a href="#" className="text-white-50">Getting Started</a></li>
             </ul>
           </Col>
           <Col md={3} className="mb-3">
