@@ -37,6 +37,7 @@ const BetweenCarousel = () => {
     `
       )
       .then((response) => {
+        console.log(response.data.results);
         setMovies(response.data.results);
       });
   }, []);
